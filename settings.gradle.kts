@@ -12,3 +12,5 @@ plugins {
 
 rootProject.name = "ConnectFour-Game"
 include("app")
+
+include("api")
