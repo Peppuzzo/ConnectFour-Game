@@ -1,6 +1,6 @@
 package model.player;
 
-import java.awt.Color;
+import model.board.Color;
 
 public abstract class AbstractPlayer {
     private final String name;
