@@ -30,14 +30,47 @@ package model.board;
  */
 public class Board {
     private final int row = 6;
-    private final int column = 7;
+    private final int col = 7;
     private Cell[][] cells;
 
     public Board(){
         // initialization of the empty grid
-        this.cells = new Cell[row][column];
+        this.cells = new Cell[row][col];
     }
 
-    
+
+    /**
+     * This method returns the number of rows
+     *
+     * @return the number of rows in the grid
+     */
+    private int getRow() {
+        return row;
+    }
+
+
+    /**
+     * This method returns the number of columns
+     *
+     * @return the number of columns in the grid
+     */
+    private int getColumn() {
+        return col;
+    }
+
+
+    /**
+     * Determine whether the entire grid has reached a
+     * configuration in which it is no longer possible to place any pieces.
+     *
+     * @return {@code true} If the grid is full
+     *         false otherwise;
+     *         {@code false} otherwise.
+     */
+    public boolean isFull() {
+        return java.util.stream.IntStream.range(0, getRow())
+                .allMatch(row -> java.util.stream.IntStream.range(0, getColumn())
+                        .allMatch(col -> getCell(row, col) != null));
+    }
 
 }

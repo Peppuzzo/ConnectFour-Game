@@ -48,12 +48,14 @@ public abstract class AbstractPlayer {
         this.color = color;
     }
 
+
     /**
      * @return the name of player
      */
     public String getName(){
         return this.name;
     }
+
 
     /**
      * @return the color of player
