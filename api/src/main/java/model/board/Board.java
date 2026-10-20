@@ -44,8 +44,8 @@ public class Board {
      *
      * @return the number of rows in the grid
      */
-    protected int getRow() {
-        return row;
+    public int getRow() {
+        return this.row;
     }
 
 
@@ -54,8 +54,8 @@ public class Board {
      *
      * @return the number of columns in the grid
      */
-    protected int getColumn() {
-        return col;
+    public int getColumn() {
+        return this.col;
     }
 
 
@@ -80,6 +80,7 @@ public class Board {
      *         false otherwise;
      *         {@code false} otherwise.
      */
+    //TODO: Under what circumstances can we use it?
     private boolean isFull() {
         return java.util.stream.IntStream.range(0, getRow())
                 .allMatch(row -> java.util.stream.IntStream.range(0, getColumn())
@@ -111,5 +112,7 @@ public class Board {
         }
         return false;
     }
+
+
 
 }
