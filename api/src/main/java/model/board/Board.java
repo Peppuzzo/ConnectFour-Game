@@ -33,9 +33,9 @@ public class Board {
     private final int col = 7;
     private final Cell[][] cells;
 
-    public Board(Cell[][] cells){
+    public Board(){
         // initialization of the empty grid
-        this.cells = cells;
+        this.cells = new Cell[row][col];
     }
 
 
@@ -66,14 +66,8 @@ public class Board {
      * @param col the position in that col
      *
      * @return the cell in the position
-     *
-     * @throws IndexOutOfBoundsException If the row or column does not fall
-     * within the dimensions of the game grid
      */
     public Cell getCell(int row, int col) {
-        if(this.row >= row || this.col >= col){
-            throw new IndexOutOfBoundsException("Invalid row or column");
-        }
         return cells[row][col];
     }
 
@@ -86,10 +80,36 @@ public class Board {
      *         false otherwise;
      *         {@code false} otherwise.
      */
-    public boolean isFull() {
+    private boolean isFull() {
         return java.util.stream.IntStream.range(0, getRow())
                 .allMatch(row -> java.util.stream.IntStream.range(0, getColumn())
                         .allMatch(col -> getCell(row, col) != null));
+    }
+
+
+    /**
+     * Inserts a piece into the specified column of the game grid.
+     * The piece falls to the lowest available row according to gravity.
+     *
+     * @param col   the column index where the piece is to be dropped
+     * @param color the color of the piece being inserted
+     *
+     * @return true if the piece was successfully dropped,
+     *         false if the column is full
+     *
+     * @throws IllegalArgumentException if the column does not fall
+     *         within the dimensions of the game grid or the color is null
+     */
+    public boolean dropPiece(int col, Color color){
+        if(col < 0 || col >= getColumn() || color == null)
+            throw new IllegalArgumentException("Invalid column or color");
+        for(int row = getRow() - 1; row >= 0; row--){
+            if(getCell(row, col) == null){
+                cells[row][col] = new Cell(new Position(row, col), color);
+                return true;
+            }
+        }
+        return false;
     }
 
 }

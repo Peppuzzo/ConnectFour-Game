@@ -31,6 +31,5 @@ import model.player.AbstractPlayer;
  *The responsibility of this class will be to
  * represent an immutable cell within the game grid.
  */
-//TODO: non mi convince il fatto che non possa mettere i set per le coordinate, sicuro Record??
-public record Cell(Position position, AbstractPlayer player) {
+public record Cell(Position position, Color color) {
 }
