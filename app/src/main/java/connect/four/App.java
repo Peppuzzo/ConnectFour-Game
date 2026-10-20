@@ -4,8 +4,14 @@
 package connect.four;
 
 import model.board.Board;
+import model.board.Cell;
+import model.board.Position;
 
 public class App {
     public static void main(String[] args) {
+
+        Cell c = new Cell(new Position(0,0),null);
+
+        c.position().getY()
     }
 }

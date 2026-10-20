@@ -31,11 +31,11 @@ package model.board;
 public class Board {
     private final int row = 6;
     private final int col = 7;
-    private Cell[][] cells;
+    private final Cell[][] cells;
 
-    public Board(){
+    public Board(Cell[][] cells){
         // initialization of the empty grid
-        this.cells = new Cell[row][col];
+        this.cells = cells;
     }
 
 
@@ -44,7 +44,7 @@ public class Board {
      *
      * @return the number of rows in the grid
      */
-    private int getRow() {
+    protected int getRow() {
         return row;
     }
 
@@ -54,8 +54,27 @@ public class Board {
      *
      * @return the number of columns in the grid
      */
-    private int getColumn() {
+    protected int getColumn() {
         return col;
+    }
+
+
+    /**
+     * Returns the current cell based on its position in the grid
+     *
+     * @param row the position in that row
+     * @param col the position in that col
+     *
+     * @return the cell in the position
+     *
+     * @throws IndexOutOfBoundsException If the row or column does not fall
+     * within the dimensions of the game grid
+     */
+    public Cell getCell(int row, int col) {
+        if(this.row >= row || this.col >= col){
+            throw new IndexOutOfBoundsException("Invalid row or column");
+        }
+        return cells[row][col];
     }
 
 
