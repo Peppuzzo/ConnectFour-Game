@@ -68,6 +68,9 @@ public class Board {
      * @return the cell in the position
      */
     public Cell getCell(int row, int col) {
+        if (row < 0 || row >= getRow() || col < 0 || col >= getColumn())
+            throw new IndexOutOfBoundsException("Coordinates outside the grid limits");
+
         return cells[row][col];
     }
 

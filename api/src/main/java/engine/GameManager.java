@@ -29,5 +29,5 @@ package engine;
  * The responsibility of this class will be to coordinate the game logic.
  */
 public class GameManager {
-    
+
 }
