@@ -26,6 +26,7 @@
 package model;
 
 import model.board.Board;
+import model.board.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,8 +61,8 @@ class BoardTest {
     @Test
     void testGetCellValidCoordinates() {
         // The Boundary Value Analysis testing technique is applied.
-        assertNull(board.getCell(0, 0), "La cella (0,0) dovrebbe essere null");
-        assertNull(board.getCell(5, 6), "La cella (5,6) dovrebbe essere null");
+        assertNull(board.getCell(0, 0), "Cell (5,6) should be null");
+        assertNull(board.getCell(5, 6), "Cell (5,6) should be null");
     }
 
 
@@ -87,5 +88,32 @@ class BoardTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             board.getCell(0, board.getColumn());
         }, "Should throw an exception for a column >= getColumn()");
+    }
+
+
+    @Test
+    void testBoardIsNotFullInitially() {
+        assertFalse(board.isFull(), "Error: a newly initialized board is already full!");
+    }
+
+
+    @Test
+    void testBoardIsNotFullPartially() {
+        board.dropPiece(0, Color.RED);
+        board.dropPiece(3, Color.YELLOW);
+        board.dropPiece(6, Color.RED);
+
+        assertFalse(board.isFull(), "Error: the board appears full, but there are empty columns!");
+    }
+
+
+    @Test
+    void testBoardIsFullCompletely() {
+        for (int col = 0; col < board.getColumn(); col++) {
+            for (int row = 0; row < board.getRow(); row++) {
+                board.dropPiece(col, Color.RED);
+            }
+        }
+        assertTrue(board.isFull(), "Error: the board is completely full, but isFull() returns false!");
     }
 }

@@ -84,7 +84,7 @@ public class Board {
      *         {@code false} otherwise.
      */
     //TODO: Under what circumstances can we use it?
-    private boolean isFull() {
+    public boolean isFull() {
         return java.util.stream.IntStream.range(0, getRow())
                 .allMatch(row -> java.util.stream.IntStream.range(0, getColumn())
                         .allMatch(col -> getCell(row, col) != null));
