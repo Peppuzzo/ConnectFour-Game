@@ -25,6 +25,9 @@
 
 package engine;
 
+import model.board.Board;
+import model.player.AbstractPlayer;
+
 public interface IGameManager {
 
 
@@ -47,7 +50,40 @@ public interface IGameManager {
 
 
     /**
+     * Returns the current player who has just completed their turn
      *
+     * @return the current player
      */
+    AbstractPlayer getPlayer();
 
+
+    /**
+     * Determine whether the game has ended (cases: a winner or a draw)
+     *
+     * @return {@code true} if there is a winner
+     *         {@code false} otherwise or a draw
+     */
+    boolean isGameOver();
+
+
+    /**
+     * Returns the winner of the match, if one exists.
+     *
+     * @return the winner of the match
+     */
+    AbstractPlayer getWinner();
+
+
+    /**
+     * Returns the current state of the game grid
+     *
+     * @return the Board object
+     */
+    Board getBoard();
+
+
+    /**
+     * Resets the game state to begin a new game
+     */
+    void resetGame();
 }
