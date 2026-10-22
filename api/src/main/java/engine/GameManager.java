@@ -25,11 +25,32 @@
 
 package engine;
 
+import model.player.AbstractPlayer;
+
 /**
  * The responsibility of this class will be to coordinate the game logic.
  */
-public class GameManager {
+public class GameManager implements IGameManager {
+    private AbstractPlayer currentPlayer;
 
+    @Override
+    public boolean makeMove(int col){
+
+    }
+
+
+    @Override
+    public AbstractPlayer getPlayer(){
+        return this.currentPlayer;
+    }
+
+
+    /**
+     *
+     */
+    private void switchToNextTurn(){
+
+    }
 
 
 
