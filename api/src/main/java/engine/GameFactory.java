@@ -25,6 +25,19 @@
 
 package engine;
 
+import model.board.Board;
+import model.player.AbstractPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameFactory {
-    
+
+    public GameManager initializeGame(){
+        Board board = new Board();
+        IEvaluatorManager valuator = new EvaluatorManager();
+        List<AbstractPlayer> players = new ArrayList<>();
+
+        return new GameManager(players, valuator, board);
+    }
 }

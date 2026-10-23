@@ -41,10 +41,11 @@ public class GameManager implements IGameManager {
     private AbstractPlayer winner;
     private IEvaluatorManager evaluator;
 
-    GameManager(List<AbstractPlayer> players, IEvaluatorManager evaluator) {
+    GameManager(List<AbstractPlayer> players, IEvaluatorManager evaluator,
+                Board board) {
         if(players == null || players.size() < 2)
             throw new IllegalArgumentException("The game requires at least 2 players.");
-        this.board = new Board();
+        this.board = board;
         this.evaluator = evaluator;
         this.players = players;
         this.winner = null;

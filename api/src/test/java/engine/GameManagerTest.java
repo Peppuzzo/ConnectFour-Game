@@ -25,6 +25,7 @@
 
 package engine;
 
+import model.board.Board;
 import model.board.Color;
 import model.player.AbstractPlayer;
 import model.player.MyPlayer;
@@ -43,13 +44,15 @@ public class GameManagerTest {
 
     @BeforeEach
     void setUp() {
+        Board board = new Board();
+
         player1 = new MyPlayer("Player 1", Color.RED);
         player2 = new MyPlayer("Player 2", Color.YELLOW);
 
         List<AbstractPlayer> players = List.of(player1, player2);
         EvaluatorManager evaluatorManager = new EvaluatorManager();
 
-        gameManager = new GameManager(players, evaluatorManager);
+        gameManager = new GameManager(players, evaluatorManager, board);
     }
 
     @Test
