@@ -3,13 +3,35 @@
  */
 package connect.four;
 
-import model.board.Board;
-import model.board.Cell;
-import model.board.Position;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class App {
+import java.util.Objects;
+
+public class App  extends Application {
+
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/create-player.fxml")));
+        primaryStage.setScene(new Scene(root, 447,242));
+
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main-scene.fxml")));
+        //primaryStage.setScene(new Scene(root, 507,333));
+
+
+
+        //String css = Objects.requireNonNull(this.getClass().getResource("/css/main_style.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("/css/player_setup_controller.css")).toExternalForm();
+        root.getStylesheets().add(css);
+
+
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-
-
+        launch(args);
     }
 }
