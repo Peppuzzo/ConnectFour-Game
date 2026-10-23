@@ -31,7 +31,7 @@
   ~
   -->
 
-<AnchorPane prefHeight="242.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.forza_4.app.PlayerSetupController">
+<AnchorPane prefHeight="242.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect.four.PlayerSetupController">
 
     <children>
 

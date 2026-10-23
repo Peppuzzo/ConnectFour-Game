@@ -30,7 +30,7 @@
   ~
   -->
 
-<AnchorPane fx:id="Pane" prefHeight="333.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.forza_4.app.MainController">
+<AnchorPane fx:id="Pane" prefHeight="333.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect.four.MainController">
 
     <children>
 

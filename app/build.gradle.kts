@@ -17,7 +17,7 @@ repositories {
 }
 
 javafx {
-    version = "21.0.12"
+    version = "21.0.2"
     modules = listOf("javafx.controls", "javafx.fxml", "javafx.graphics");
 }
 
@@ -46,4 +46,9 @@ java {
 application {
     // Define the main class for the application.
     mainClass = "connect.four.App"
+
+    applicationDefaultJvmArgs = listOf(
+        "--enable-native-access=javafx.graphics",
+        "--enable-native-access=javafx.controls"
+    )
 }
