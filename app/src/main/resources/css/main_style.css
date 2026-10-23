@@ -1,0 +1,76 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2026 Giuseppe Calabrese
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+/* ====== GENERAL BACKGROUND ====== */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #1e1e2f, #2a2a40);
+    -fx-padding: 20;
+}
+
+/* ====== LOGO ====== */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 20, 0.2, 0, 5);
+}
+
+/* ====== MENU BUTTON ====== */
+.menu-button {
+    -fx-background-color: #ffcc00;
+    -fx-background-radius: 8;
+    -fx-text-fill: #1e1e2f;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.2, 0, 3);
+}
+
+/* Hover */
+.menu-button:hover {
+    -fx-background-color: #ffd633;
+}
+
+/* Click */
+.menu-button:pressed {
+    -fx-background-color: #e6b800;
+}
+
+/* ====== LOGOUT BUTTON ====== */
+.logout-button {
+    -fx-background-color: #ff5555;
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #ff7777;
+}
+
+.logout-button:pressed {
+    -fx-background-color: #e64545;
+}
