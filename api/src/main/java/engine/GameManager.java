@@ -26,6 +26,7 @@
 package engine;
 
 import model.board.Board;
+import model.board.Color;
 import model.player.AbstractPlayer;
 
 import java.util.List;
@@ -37,18 +38,41 @@ public class GameManager implements IGameManager {
     private Board board;
     private List<AbstractPlayer> players;
     private int currentPlayerIndex;
+    private AbstractPlayer winner;
+    private IEvaluatorManager evaluator;
 
-    GameManager(List<AbstractPlayer> players) {
-        if(players == null || this.players.size() < 2)
+    GameManager(List<AbstractPlayer> players, IEvaluatorManager evaluator) {
+        if(players == null || players.size() < 2)
             throw new IllegalArgumentException("The game requires at least 2 players.");
+        this.board = new Board();
+        this.evaluator = evaluator;
         this.players = players;
+        this.winner = null;
         currentPlayerIndex = 0; //The first player on the list begins
     }
 
 
     @Override
     public boolean makeMove(int col){
+        if (isGameOver()) {
+            return false;
+        }
 
+        Color color = getPlayer().getColor();
+        boolean success = board.dropPiece(col, color);
+
+        if (success) {
+            int row = findFirstOccupiedRow(col);
+            Color winningColor = evaluator.checkWin(board, row, col);
+
+            if (winningColor != null) {
+                this.winner = getPlayer();
+            } else if (!board.isFull()) {
+                switchToNextTurn();
+            }
+            return true;
+        }
+        return false;
     }
 
 
@@ -66,7 +90,7 @@ public class GameManager implements IGameManager {
 
     @Override
     public AbstractPlayer getWinner(){
-        
+        return this.winner;
     }
 
 
@@ -76,13 +100,37 @@ public class GameManager implements IGameManager {
     }
 
 
+    @Override
+    public void resetGame(){
+        this.board = new Board();
+        this.currentPlayerIndex = 0;
+        this.winner = null;
+    }
+
+
     /**
-     *
+     * Switch the players' turns after the piece has been successfully placed.
      */
     private void switchToNextTurn(){
         currentPlayerIndex = (currentPlayerIndex + 1) % this.players.size();
     }
 
+
+    /**
+     * Locating the last occupied space
+     *
+     * @param column The column where the player chose to add the game piece
+     *
+     * @return The index of the row just occupied
+     */
+    private int findFirstOccupiedRow(int column) {
+        for (int row = 0; row < this.board.getRow(); row++) {
+            if (this.board.getCell(row, column) != null) {
+                return row;
+            }
+        }
+        return -1;
+    }
 
 
 }
