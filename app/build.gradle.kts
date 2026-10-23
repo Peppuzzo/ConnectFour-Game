@@ -8,11 +8,17 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("org.openjfx.javafxplugin") version "0.0.14"
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+javafx {
+    version = "21.0.12"
+    modules = listOf("javafx.controls", "javafx.fxml", "javafx.graphics");
 }
 
 dependencies {
@@ -24,6 +30,10 @@ dependencies {
 
     // This is a dependency I created for the api module
     implementation(project(":api"))
+
+    implementation("org.openjfx:javafx-controls:21.0.10")
+    implementation("org.openjfx:javafx-fxml:21.0.10")
+    implementation("org.openjfx:javafx-graphics:21.0.10")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
