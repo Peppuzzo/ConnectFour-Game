@@ -52,11 +52,11 @@ public class EvaluatorManager implements IEvaluatorManager {
             consecutiveCount += countMatchingInDirection(board, lastRow, lastCol, -dir.x, -dir.y, targetColor);
 
             if (consecutiveCount >= 4) {
-                return targetColor; // Restituisce il colore vincente!
+                return targetColor; // Returns the winning color
             }
         }
 
-        return null; // Nessuna vittoria
+        return null;
     }
 
 
