@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2026 Giuseppe Calabrese
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
+
+<AnchorPane fx:id="Pane" prefHeight="333.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.forza_4.app.MainController">
+
+    <children>
+
+        <ImageView fitHeight="150.0" fitWidth="318.0" layoutX="95.0" layoutY="41.0" preserveRatio="true" styleClass="image-view">
+            <image>
+                <Image url="@../img/Game_logo.png" />
+            </image>
+        </ImageView>
+
+        <Button fx:id="modeSinglePayer" layoutX="188.0" layoutY="167.0" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="SINGLEPLAYER" />
+
+        <Button fx:id="modeMultiplayer" layoutX="189.0" layoutY="216.0" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="MULTIPLAYER" />
+
+        <Button layoutX="189.0" layoutY="260.0" onAction="#logoutApp" prefHeight="26.0" prefWidth="130.0" styleClass="logout-button" text="LOGOUT" />
+
+    </children>
+</AnchorPane>
