@@ -26,18 +26,68 @@
 package engine;
 
 import model.board.Board;
+import model.board.Color;
 import model.player.AbstractPlayer;
+import model.player.BotPlayer;
+import model.player.MyPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameFactory {
 
-    public GameManager initializeGame(){
+    /**
+     * Main method that coordinates the creation of the game.
+     *
+     * @param gameConfig the DTO containing the user's preferences
+     *
+     * @return the ready-to-use GameManager
+     */
+    public GameManager initializeGame(GameConfig gameConfig) {
+        if (gameConfig == null) {
+            throw new IllegalArgumentException("GameConfig cannot be null");
+        }
+
         Board board = new Board();
         IEvaluatorManager valuator = new EvaluatorManager();
-        List<AbstractPlayer> players = new ArrayList<>();
+
+        List<AbstractPlayer> players = createPlayers(gameConfig);
 
         return new GameManager(players, valuator, board);
     }
+
+
+    /**
+     * Helper method dedicated exclusively to the creation and configuration of players.
+     *
+     * @param gameConfig the DTO containing the setup data
+     *
+     * @return the list of players, correctly configured
+     */
+    private List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
+        List<AbstractPlayer> players = new ArrayList<>();
+
+        players.add(new MyPlayer(
+                gameConfig.getPlayerConfig1().getName(),
+                gameConfig.getPlayerConfig1().getColor()
+        ));
+
+
+        if (gameConfig.getMode() == Mode.MultiPlayer) {
+            players.add(new MyPlayer(
+                    gameConfig.getPlayerConfig2().getName(),
+                    gameConfig.getPlayerConfig2().getColor()
+            ));
+        } else if (gameConfig.getMode() == Mode.SinglePlayer) {
+            // If, in SinglePlayer, you want to use the color set by the user for the bot (or a default one)
+            Color botColor = (gameConfig.getPlayerConfig2() != null)
+                    ? gameConfig.getPlayerConfig2().getColor()
+                    : Color.BLUE;
+
+            players.add(new BotPlayer("Bot", botColor));
+        }
+
+        return players;
+    }
+
 }
