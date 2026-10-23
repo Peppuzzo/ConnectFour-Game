@@ -117,5 +117,23 @@ public class Board {
     }
 
 
+    /**
+     * Returns a copy of the current state of the grid
+     *
+     * @return the current state of the grid
+     */
+    public Board copyBoard(){
+        Board board = new Board();
+        for(int i = 0; i < this.getRow(); i++){
+            for(int j = 0; j < this.getColumn(); j++){
+                Cell cell = this.cells[i][j];
+                if(cell != null)
+                    board.cells[i][j] = new Cell(cell.position(), cell.color());
+                else
+                    board.cells[i][j] = null;
+            }
+        }
+        return board;
+    }
 
 }

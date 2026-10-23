@@ -116,4 +116,18 @@ class BoardTest {
         }
         assertTrue(board.isFull(), "Error: the board is completely full, but isFull() returns false!");
     }
+
+
+    @Test
+    void testBoardCopyState() {
+        Board originalCopy = new Board();
+        originalCopy.dropPiece(3, Color.RED); // Assuming it ends up at the bottom of column 3 (row 5)
+
+        Board copyBoard = originalCopy.copyBoard();
+        assertNotSame(originalCopy, copyBoard); // It is verified that they are not the same object in memory
+
+        assertNotSame(originalCopy.getCell(5, 4),
+                copyBoard.getCell(5, 3),
+                "Error: the cells share the same reference");
+    }
 }
