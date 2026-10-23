@@ -25,13 +25,26 @@
 
 package engine;
 
+import model.board.Board;
 import model.player.AbstractPlayer;
+
+import java.util.List;
 
 /**
  * The responsibility of this class will be to coordinate the game logic.
  */
 public class GameManager implements IGameManager {
-    private AbstractPlayer currentPlayer;
+    private Board board;
+    private List<AbstractPlayer> players;
+    private int currentPlayerIndex;
+
+    GameManager(List<AbstractPlayer> players) {
+        if(players == null || this.players.size() < 2)
+            throw new IllegalArgumentException("The game requires at least 2 players.");
+        this.players = players;
+        currentPlayerIndex = 0; //The first player on the list begins
+    }
+
 
     @Override
     public boolean makeMove(int col){
@@ -41,7 +54,25 @@ public class GameManager implements IGameManager {
 
     @Override
     public AbstractPlayer getPlayer(){
-        return this.currentPlayer;
+        return this.players.get(currentPlayerIndex);
+    }
+
+
+    @Override
+    public Board getBoard(){
+        return this.board.copyBoard();
+    }
+
+
+    @Override
+    public AbstractPlayer getWinner(){
+        
+    }
+
+
+    @Override
+    public boolean isGameOver(){
+        return getWinner() != null || this.board.isFull();
     }
 
 
@@ -49,9 +80,8 @@ public class GameManager implements IGameManager {
      *
      */
     private void switchToNextTurn(){
-
+        currentPlayerIndex = (currentPlayerIndex + 1) % this.players.size();
     }
-
 
 
 

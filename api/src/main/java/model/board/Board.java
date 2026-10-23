@@ -83,7 +83,6 @@ public class Board {
      *         false otherwise;
      *         {@code false} otherwise.
      */
-    //TODO: Under what circumstances can we use it?
     public boolean isFull() {
         return java.util.stream.IntStream.range(0, getRow())
                 .allMatch(row -> java.util.stream.IntStream.range(0, getColumn())
