@@ -24,13 +24,13 @@
 
 package connect.four;
 
+import engine.ColorManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import model.board.Color;
-//import model.board.ColorManager;
 
 public class PlayerSetupController {
 
@@ -47,7 +47,7 @@ public class PlayerSetupController {
   @FXML
   private TextField nameField2;
 
-  //private final ColorManager colorManager = new ColorManager();
+  private final ColorManager colorManager = new ColorManager();
 
 
   /**
@@ -59,10 +59,10 @@ public class PlayerSetupController {
    */
   @FXML
   public void initialize() {
-    //colorsBox.getItems().addAll(colorManager.getAvailableColors());
+    colorsBox.getItems().addAll(colorManager.getAvailableColors());
     initializeCell(colorsBox);
     visualButtonCell(colorsBox);
-    //colorsBox2.getItems().addAll(colorManager.getAvailableColors());
+    colorsBox2.getItems().addAll(colorManager.getAvailableColors());
     initializeCell(colorsBox2);
     visualButtonCell(colorsBox2);
   }
