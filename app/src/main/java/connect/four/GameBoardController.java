@@ -24,6 +24,18 @@
 
 package connect.four;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.layout.GridPane;
+
 public class GameBoardController {
+
+    @FXML
+    private GridPane boardGrid;
+
+    @FXML
+    void handleColumnClick(ActionEvent event) {
+
+    }
 
 }
