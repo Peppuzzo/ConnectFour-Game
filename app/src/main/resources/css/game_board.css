@@ -1,0 +1,47 @@
+/*
+ * MIT License
+ * Copyright (c) 2026 Giuseppe Calabrese
+ * Permission is hereby granted, free of charge, to any person obtaining a copy...
+ */
+
+/* ====== GAME BOARD CONTAINER ====== */
+.game-board {
+    -fx-background-color: #252538;
+    -fx-background-radius: 16;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 25, 0.3, 0, 8);
+}
+
+/* ====== BOARD CELLS (StackPane) ====== */
+.board-cell {
+    -fx-alignment: center;
+}
+
+/* ====== HOLES / EMPTY SLOTS (Cerchi vuoti) ====== */
+.board-hole {
+    -fx-fill: #161622;
+    -fx-stroke: #3a3a5c;
+    -fx-stroke-type: inside;
+    -fx-stroke-width: 2;
+}
+
+/* ====== COLUMN SELECTOR BUTTONS (I bottoni in cima da 0 a 6) ====== */
+.column-button {
+    -fx-background-color: #3a3a5c;
+    -fx-background-radius: 6;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.2, 0, 2);
+}
+
+.column-button:hover {
+    -fx-background-color: #ffcc00;
+    -fx-text-fill: #1e1e2f;
+}
+
+
+.column-button:pressed {
+    -fx-background-color: #e6b800;
+}
