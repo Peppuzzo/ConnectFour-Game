@@ -32,6 +32,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import model.board.Color;
 
+import java.util.List;
+
 public class PlayerSetupController {
 
   // TODO: size combox1 =! actual?
@@ -59,12 +61,41 @@ public class PlayerSetupController {
    */
   @FXML
   public void initialize() {
-    colorsBox.getItems().addAll(colorManager.getAvailableColors());
+    List<Color> initialColors = colorManager.getAvailableColors();
+    colorsBox.getItems().addAll(initialColors);
+    colorsBox2.getItems().addAll(initialColors);
+
     initializeCell(colorsBox);
     visualButtonCell(colorsBox);
-    colorsBox2.getItems().addAll(colorManager.getAvailableColors());
     initializeCell(colorsBox2);
     visualButtonCell(colorsBox2);
+
+    setupColorSelectionListeners();
+  }
+
+
+  private void setupColorSelectionListeners(){
+    colorsBox.valueProperty().addListener((obs, oldColor, newColor) -> {
+      if (newColor != null) {
+        colorsBox2.getItems().remove(newColor);
+      }
+      if (oldColor != null) {
+        if (!colorsBox2.getItems().contains(oldColor)) {
+          colorsBox2.getItems().add(oldColor);
+        }
+      }
+    });
+
+    colorsBox2.valueProperty().addListener((obs, oldColor, newColor) -> {
+      if (newColor != null) {
+        colorsBox.getItems().remove(newColor);
+      }
+      if (oldColor != null) {
+        if (!colorsBox.getItems().contains(oldColor)) {
+          colorsBox.getItems().add(oldColor);
+        }
+      }
+    });
   }
 
 
@@ -105,10 +136,12 @@ public class PlayerSetupController {
       protected void updateItem(Color item, boolean empty) {
         super.updateItem(item, empty);
 
+
         if (empty || item == null) {
           setText(null);
           setGraphic(null);
         } else {
+          colorManager.removeColor(item);
           Rectangle rect = new Rectangle(20, 20);
           rect.setStyle("-fx-fill: " + item + "; -fx-stroke: black;");
           setText(item.name());
