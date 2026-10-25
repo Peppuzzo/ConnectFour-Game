@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Giuseppe Calabrese
+ * Copyright (c) 2026 Giuseppe Calabrese
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 package connect.four;
 
 import engine.ColorManager;
+import engine.Mode;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -51,8 +52,10 @@ public class PlayerSetupController {
 
   private final ColorManager colorManager = new ColorManager();
 
+  private Mode mode;
 
-  /**
+
+    /**
    * Initialize the controller.
    * <p>
    * Populates both color ComboBoxes with the available colors from the
@@ -74,6 +77,10 @@ public class PlayerSetupController {
   }
 
 
+  /**
+   * It removes the color chosen by the player and then adds it to the other one;
+   * this ensures that the colors do not overlap or coincide at the same time.
+   */
   private void setupColorSelectionListeners(){
     colorsBox.valueProperty().addListener((obs, oldColor, newColor) -> {
       if (newColor != null) {
@@ -150,5 +157,16 @@ public class PlayerSetupController {
       }
     };
   }
+
+
+  /**
+   * Set a game mode chosen by the player
+   *
+   * @param mode the game mode
+   */
+  protected void setGameMode(Mode mode) {
+    this.mode =  mode;
+  }
+
 }
 

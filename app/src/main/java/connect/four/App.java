@@ -14,18 +14,13 @@ import java.util.Objects;
 public class App  extends Application {
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/create-player.fxml")));
-        primaryStage.setScene(new Scene(root, 447,242));
+        //primaryStage.setScene(new Scene(root, 768.8,578.4));
 
-        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main-scene.fxml")));
-        //primaryStage.setScene(new Scene(root, 507,333));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main-scene.fxml")));
+        primaryStage.setScene(new Scene(root, 507,333));
 
-
-
-        //String css = Objects.requireNonNull(this.getClass().getResource("/css/main_style.css")).toExternalForm();
-        String css = Objects.requireNonNull(this.getClass().getResource("/css/player_setup_controller.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("/css/main_style.css")).toExternalForm();
         root.getStylesheets().add(css);
-
 
         primaryStage.setResizable(false);
         primaryStage.show();
