@@ -41,7 +41,7 @@ public class GameBoardController {
     @FXML
     private GridPane boardGrid;
 
-    private GameManager gameManager = GameFactory.getGameManager();
+    private final GameManager gameManager = GameFactory.getGameManager();
 
     @FXML
     private void handleColumnClick(ActionEvent event) {
@@ -155,7 +155,8 @@ public class GameBoardController {
         return null;
     }
 
+
     private void handleGameOver() {
-        System.out.println("Partita terminata! Vincitore: " + gameManager.getWinner());
+        System.out.println("Partita terminata! Vincitore: " + gameManager.getWinner().getName());
     }
 }

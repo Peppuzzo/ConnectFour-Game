@@ -14,8 +14,6 @@ import java.util.Objects;
 public class App  extends Application {
 
     public void start(Stage primaryStage) throws Exception {
-        //primaryStage.setScene(new Scene(root, 768.8,578.4));
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main-scene.fxml")));
         primaryStage.setScene(new Scene(root, 507,333));
 
