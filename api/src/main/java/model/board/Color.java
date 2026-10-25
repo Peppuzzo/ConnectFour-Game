@@ -29,7 +29,8 @@ public enum Color {
     RED("#FF0000"),
     BLUE("#0000FF"),
     GREEN("#00FF00"),
-    YELLOW("#FFFF00");
+    YELLOW("#FFFF00"),
+    TRANSPARENT("");
 
     private final String code;
 

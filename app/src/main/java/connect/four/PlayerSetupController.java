@@ -32,8 +32,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import model.board.Color;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
+import java.util.Objects;
 
 public class PlayerSetupController {
 
@@ -49,9 +49,9 @@ public class PlayerSetupController {
   @FXML
   private TextField nameField2;
 
-  private final ColorManager colorManager = new ColorManager();
-
   private Mode mode;
+
+  private final ColorManager colorManager = new ColorManager();
 
 
     /**
@@ -92,6 +92,22 @@ public class PlayerSetupController {
       GameConfig configFinal = new GameConfig(new PlayerConfig(name1, colo1),
               new PlayerConfig(name2, colo2), getMode());
       GameFactory.initializeGame(configFinal);
+
+      try {
+        javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/game-board.fxml"));
+        javafx.scene.Parent root = loader.load();
+
+        javafx.stage.Stage stage = (javafx.stage.Stage) nameField.getScene().getWindow();
+        String css = Objects.requireNonNull(this.getClass().getResource("/css/game_board.css")).toExternalForm();
+        root.getStylesheets().add(css);
+        stage.setScene(new javafx.scene.Scene(root));
+        stage.setResizable(false);
+        stage.show();
+
+      } catch (java.io.IOException e) {
+        e.printStackTrace();
+        System.err.println("Unable to load the game screen");
+      }
     }
   }
 

@@ -36,22 +36,24 @@ import java.util.List;
 
 public class GameFactory {
 
+    private static GameManager manager;
+    private static GameConfig config;
+
     /**
      * Main method that coordinates the creation of the game.
      *
      * @param gameConfig the DTO containing the user's preferences
-     *
-     * @return the ready-to-use GameManager
      */
-    public static GameManager initializeGame(GameConfig gameConfig) {
+    public static void initializeGame(GameConfig gameConfig) {
         if (gameConfig == null) {
             throw new IllegalArgumentException("GameConfig cannot be null");
         }
+        config = gameConfig;
         Board board = new Board();
         IEvaluatorManager valuator = new EvaluatorManager();
         List<AbstractPlayer> players = createPlayers(gameConfig);
 
-        return new GameManager(players, valuator, board);
+        manager = new GameManager(players, valuator, board);
     }
 
 
@@ -86,6 +88,24 @@ public class GameFactory {
         }
 
         return players;
+    }
+
+    public static GameManager getGameManager() {
+        return manager;
+    }
+
+    /*private void setGameManager(GameManager gameManager) {
+        this.manager = gameManager;
+    }*/
+
+
+    public static Color getColorPlayer1() {
+        return config.getPlayerConfig1().getColor();
+    }
+
+
+    public static Color getColorPlayer2() {
+        return config.getPlayerConfig2().getColor();
     }
 
 }
