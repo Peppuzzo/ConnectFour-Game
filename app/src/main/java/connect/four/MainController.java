@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Giuseppe Calabrese
+ * Copyright (c) 2026 Giuseppe Calabrese
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,20 @@
 
 package connect.four;
 
+import engine.Mode;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.Objects;
 
 
 public class MainController {
@@ -45,6 +53,50 @@ public class MainController {
 
   @FXML
   Stage stage;
+
+  private Mode mode;
+
+
+  @FXML
+  public void handleGameModeSelection(javafx.event.ActionEvent event) {
+    Button buttonInput = (Button) event.getSource();
+
+    if(buttonInput.equals(modeMultiplayer)){
+      mode = Mode.MultiPlayer;
+    } else if(buttonInput.equals(modeSinglePayer)){
+      mode = Mode.SinglePlayer;
+    }
+    loadPlayerCreationScreen(buttonInput, mode);
+  }
+
+
+  /**
+   * Loads the player setup screen (create-player.fxml), instantiates its controller,
+   * and passes the selected game mode to it.
+   *
+   * @param buttonInput the button clicked by the player, used to retrieve the current window stage.
+   * @param mode the game mode chosen by the player (Single Player or Multiplayer).
+   */
+  private void loadPlayerCreationScreen(Button buttonInput, Mode mode) {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/create-player.fxml"));
+      Parent root = loader.load();
+
+      PlayerSetupController controllerPlayer = loader.getController();
+      controllerPlayer.setGameMode(mode);
+
+      Stage stage = (Stage) buttonInput.getScene().getWindow();
+      stage.setScene(new Scene(root, 447, 242));
+      String css = Objects.requireNonNull(this.getClass().getResource("/css/player_setup_controller.css"))
+              .toExternalForm();
+      root.getStylesheets().add(css);
+      stage.setResizable(false);
+      stage.show();
+
+    } catch (IOException e) {
+      System.err.println("Failed to load FXML create-palyer.fxml");
+    }
+  }
 
 
   @FXML

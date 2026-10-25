@@ -30,7 +30,7 @@
   ~
   -->
 
-<AnchorPane fx:id="Pane" prefHeight="333.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect.four.MainController">
+<AnchorPane fx:id="Pane" prefHeight="333.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect.four.MainController">
 
     <children>
 
@@ -40,9 +40,9 @@
             </image>
         </ImageView>
 
-        <Button fx:id="modeSinglePayer" layoutX="188.0" layoutY="167.0" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="SINGLEPLAYER" />
+        <Button fx:id="modeSinglePayer" layoutX="188.0" layoutY="167.0" onAction="#handleGameModeSelection" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="SINGLEPLAYER" />
 
-        <Button fx:id="modeMultiplayer" layoutX="189.0" layoutY="216.0" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="MULTIPLAYER" />
+        <Button fx:id="modeMultiplayer" layoutX="189.0" layoutY="216.0" onAction="#handleGameModeSelection" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="MULTIPLAYER" />
 
         <Button layoutX="189.0" layoutY="260.0" onAction="#logoutApp" prefHeight="26.0" prefWidth="130.0" styleClass="logout-button" text="LOGOUT" />
 

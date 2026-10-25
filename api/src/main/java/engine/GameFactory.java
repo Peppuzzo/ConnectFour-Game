@@ -47,10 +47,8 @@ public class GameFactory {
         if (gameConfig == null) {
             throw new IllegalArgumentException("GameConfig cannot be null");
         }
-
         Board board = new Board();
         IEvaluatorManager valuator = new EvaluatorManager();
-
         List<AbstractPlayer> players = createPlayers(gameConfig);
 
         return new GameManager(players, valuator, board);
