@@ -43,7 +43,7 @@ public class GameFactory {
      *
      * @return the ready-to-use GameManager
      */
-    public GameManager initializeGame(GameConfig gameConfig) {
+    public static GameManager initializeGame(GameConfig gameConfig) {
         if (gameConfig == null) {
             throw new IllegalArgumentException("GameConfig cannot be null");
         }
@@ -62,7 +62,7 @@ public class GameFactory {
      *
      * @return the list of players, correctly configured
      */
-    private List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
+    private static List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
         List<AbstractPlayer> players = new ArrayList<>();
 
         players.add(new MyPlayer(

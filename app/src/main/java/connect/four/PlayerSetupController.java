@@ -24,8 +24,7 @@
 
 package connect.four;
 
-import engine.ColorManager;
-import engine.Mode;
+import engine.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -33,11 +32,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import model.board.Color;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class PlayerSetupController {
 
-  // TODO: size combox1 =! actual?
   @FXML
   private ComboBox<Color> colorsBox;
 
@@ -74,6 +73,26 @@ public class PlayerSetupController {
     visualButtonCell(colorsBox2);
 
     setupColorSelectionListeners();
+  }
+
+
+  @FXML
+  private void handleConfirmButtonAction(javafx.event.ActionEvent event) {
+    String name1 = nameField.getText();
+    String name2 = nameField2.getText();
+    Color colo1 = colorsBox.getValue();
+    Color colo2 = colorsBox2.getValue();
+
+    if((name1.isEmpty() || name2.isEmpty() || (colo1== null || colo2 == null))) {
+      throw new IllegalArgumentException("Names cannot be empty fields");
+    } else if(name1.equals(name2)){
+      throw new IllegalArgumentException("The names are not equal");
+    }
+    else {
+      GameConfig configFinal = new GameConfig(new PlayerConfig(name1, colo1),
+              new PlayerConfig(name2, colo2), getMode());
+      GameFactory.initializeGame(configFinal);
+    }
   }
 
 
@@ -160,11 +179,23 @@ public class PlayerSetupController {
 
 
   /**
+   * Return the game mode returns
+   *
+   * @return the game mode returns
+   */
+  protected Mode getMode() {
+    return mode;
+  }
+
+
+  /**
    * Set a game mode chosen by the player
    *
    * @param mode the game mode
    */
   protected void setGameMode(Mode mode) {
+    if(mode == null)
+      throw new IllegalArgumentException("Mode cannot be null");
     this.mode =  mode;
   }
 

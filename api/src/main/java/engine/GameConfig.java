@@ -35,7 +35,7 @@ public class GameConfig {
     private PlayerConfig playerConfig2;
     private Mode mode;
 
-    GameConfig(PlayerConfig playerConfig1, PlayerConfig playerConfig2, Mode mode) {
+    public GameConfig(PlayerConfig playerConfig1, PlayerConfig playerConfig2, Mode mode) {
         if(playerConfig1 == null && playerConfig2 == null && mode == null)
             throw new  NullPointerException("Either playerConfig1 or playerConfig2 is null");
         this.playerConfig1 = playerConfig1;
