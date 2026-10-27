@@ -39,7 +39,8 @@ import java.util.List;
  * color (for example when a player selects it).
  */
 public class ColorManager {
-    private List<Color> colors = new ArrayList<>();
+
+    private final List<Color> colors = new ArrayList<>();
 
     /**
      * Create a new ColorManager initialized with all values of {@link Color}.

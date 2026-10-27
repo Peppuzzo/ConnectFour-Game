@@ -25,7 +25,6 @@
 
 package model.board;
 
-import model.player.AbstractPlayer;
 
 /**
  *The responsibility of this class will be to

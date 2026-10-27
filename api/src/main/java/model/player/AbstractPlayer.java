@@ -38,8 +38,8 @@ public abstract class AbstractPlayer {
      * @param name of the player
      * @param color of the player
      *
-     * @throws if the constructor of the abstract class that lays
-     * a foundation for creating players
+     * @throws IllegalArgumentException if the constructor of the
+     *    abstract class that lays a foundation for creating players
      */
     public AbstractPlayer(String name, Color color){
         if(name.isEmpty() || color == null)

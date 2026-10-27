@@ -61,8 +61,9 @@ public class GameBoardController {
         }
     }
 
+
     /**
-     * Aggiorna interamente la grafica della scacchiera leggendo lo stato dal modello.
+     * Completely updates the chessboard's visual representation by reading the state from the model.
      */
     private void updateBoardUI() {
         Board boardState = gameManager.getBoard();
@@ -86,6 +87,7 @@ public class GameBoardController {
         }
     }
 
+
     /**
      * Converte lo stato della cella del modello nel colore JavaFX usando la Factory
      */
@@ -106,6 +108,7 @@ public class GameBoardController {
 
         return javafx.scene.paint.Color.TRANSPARENT;
     }
+
 
     /**
      * Converte il tuo enum model.board.Color nel javafx.scene.paint.Color corrispondente
@@ -130,6 +133,13 @@ public class GameBoardController {
         }
     }
 
+
+    /**
+     *
+     * @param row
+     * @param col
+     * @param color
+     */
     private void setCellColor(int row, int col, javafx.scene.paint.Color color) {
         Circle circle = getCircleAt(row, col);
         if (circle != null) {
@@ -137,6 +147,13 @@ public class GameBoardController {
         }
     }
 
+
+    /**
+     *
+     * @param row
+     * @param col
+     * @return
+     */
     private Circle getCircleAt(int row, int col) {
         for (javafx.scene.Node node : boardGrid.getChildren()) {
             Integer r = GridPane.getRowIndex(node);

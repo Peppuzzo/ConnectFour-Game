@@ -30,6 +30,7 @@ package engine;
  * The responsibility of this class is to pass the game configuration,
  * along with the data, to the GameFactory class.
  */
+@SuppressWarnings("All")
 public class GameConfig {
     private PlayerConfig playerConfig1;
     private PlayerConfig playerConfig2;

@@ -25,6 +25,7 @@
 
 package model.board;
 
+@SuppressWarnings("All")
 public class Position {
     private int x;
     private int y;

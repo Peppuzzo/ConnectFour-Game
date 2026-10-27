@@ -31,6 +31,7 @@ import model.board.Color;
 /**
  * Class that contains the additional data provided by the user for the creation of their player
  */
+@SuppressWarnings("All")
 public class PlayerConfig {
     private String namePlayer;
     private Color color;

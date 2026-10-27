@@ -36,10 +36,11 @@ import java.util.List;
  */
 public class GameManager implements IGameManager {
     private Board board;
-    private List<AbstractPlayer> players;
+    private final List<AbstractPlayer> players;
     private int currentPlayerIndex;
     private AbstractPlayer winner;
-    private IEvaluatorManager evaluator;
+    private final IEvaluatorManager evaluator;
+
 
     GameManager(List<AbstractPlayer> players, IEvaluatorManager evaluator,
                 Board board) {
@@ -132,6 +133,5 @@ public class GameManager implements IGameManager {
         }
         return -1;
     }
-
 
 }

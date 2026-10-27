@@ -94,10 +94,6 @@ public class GameFactory {
         return manager;
     }
 
-    /*private void setGameManager(GameManager gameManager) {
-        this.manager = gameManager;
-    }*/
-
 
     public static Color getColorPlayer1() {
         return config.getPlayerConfig1().getColor();

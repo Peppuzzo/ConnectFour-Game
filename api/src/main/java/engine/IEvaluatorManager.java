@@ -31,12 +31,13 @@ import model.board.Color;
 public interface IEvaluatorManager {
 
     /**
+     * Determine whether a winning combination exists based on the color.
      *
+     * @param board the board of game
+     * @param lastRow the last row selected by the player
+     * @param lastCol the last col selected by the player
      *
-     * @param board
-     * @param lastRow
-     * @param lastCol
-     * @return
+     * @return the winner’s color, if one exists
      */
     Color checkWin(Board board, int lastRow, int lastCol);
 }
