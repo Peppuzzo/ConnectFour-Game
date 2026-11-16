@@ -34,14 +34,12 @@ package engine;
 public class GameConfig {
     private PlayerConfig playerConfig1;
     private PlayerConfig playerConfig2;
-    private Mode mode;
 
-    public GameConfig(PlayerConfig playerConfig1, PlayerConfig playerConfig2, Mode mode) {
-        if(playerConfig1 == null && playerConfig2 == null && mode == null)
+    public GameConfig(PlayerConfig playerConfig1, PlayerConfig playerConfig2) {
+        if(playerConfig1 == null && playerConfig2 == null)
             throw new  NullPointerException("Either playerConfig1 or playerConfig2 is null");
         this.playerConfig1 = playerConfig1;
         this.playerConfig2 = playerConfig2;
-        this.mode = mode;
     }
 
 
@@ -63,16 +61,5 @@ public class GameConfig {
     public PlayerConfig getPlayerConfig2() {
         return playerConfig2;
     }
-
-
-    /**
-     * Returns the mode chosen by the player
-     *
-     * @return the mode chosen by the player
-     */
-    public Mode getMode() {
-        return mode;
-    }
-
 
 }

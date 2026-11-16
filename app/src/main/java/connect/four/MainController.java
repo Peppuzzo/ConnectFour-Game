@@ -24,7 +24,6 @@
 
 package connect.four;
 
-import engine.Mode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,19 +52,11 @@ public class MainController {
   @FXML
   Stage stage;
 
-  private Mode mode;
-
 
   @FXML
   public void handleGameModeSelection(javafx.event.ActionEvent event) {
     Button buttonInput = (Button) event.getSource();
-
-    if(buttonInput.equals(modeMultiplayer)){
-      mode = Mode.MultiPlayer;
-    } else if(buttonInput.equals(modeSinglePayer)){
-      mode = Mode.SinglePlayer;
-    }
-    loadPlayerCreationScreen(buttonInput, mode);
+    loadPlayerCreationScreen(buttonInput);
   }
 
 
@@ -74,16 +65,11 @@ public class MainController {
    * and passes the selected game mode to it.
    *
    * @param buttonInput the button clicked by the player, used to retrieve the current window stage.
-   * @param mode the game mode chosen by the player (Single Player or Multiplayer).
    */
-  private void loadPlayerCreationScreen(Button buttonInput, Mode mode) {
+  private void loadPlayerCreationScreen(Button buttonInput) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/create-player.fxml"));
       Parent root = loader.load();
-
-      PlayerSetupController controllerPlayer = loader.getController();
-      controllerPlayer.setGameMode(mode);
-
       Stage stage = (Stage) buttonInput.getScene().getWindow();
       stage.setScene(new Scene(root, 447, 242));
       String css = Objects.requireNonNull(this.getClass().

@@ -50,7 +50,6 @@ public class PlayerSetupController {
   @FXML
   private TextField nameField2;
 
-  private Mode mode;
 
   private final ColorManager colorManager = new ColorManager();
 
@@ -91,7 +90,7 @@ public class PlayerSetupController {
     }
     else {
       GameFactory.initializeGame(new GameConfig(new PlayerConfig(name1, colo1),
-              new PlayerConfig(name2, colo2), getMode()));
+              new PlayerConfig(name2, colo2)));
       try {
         javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/game-board.fxml"));
         javafx.scene.Parent root = loader.load();
@@ -190,26 +189,5 @@ public class PlayerSetupController {
       }
     };
   }
-
-
-  /**
-   * Return the game mode returns
-   *
-   * @return the game mode returns
-   */
-  protected Mode getMode() {
-    return mode;
-  }
-
-
-  /**
-   * Set a game mode chosen by the player
-   *
-   * @param mode the game mode
-   */
-  protected void setGameMode(@NonNull Mode mode) {
-    this.mode =  mode;
-  }
-
 }
 
