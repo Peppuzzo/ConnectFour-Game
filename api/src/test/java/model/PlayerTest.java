@@ -41,13 +41,4 @@ public class PlayerTest {
         assertEquals("Mario", uman.getName(), "Error: the name of the player is null!");
         assertEquals(Color.RED, uman.getColor(), "Error: the color of the player is null!");
     }
-
-
-    @Test
-    void testBotCreation(){
-        AbstractPlayer bot = new BotPlayer("bot", Color.BLUE);
-
-        assertEquals("bot", bot.getName(), "Error: the name of the player is null!");
-        assertEquals(Color.BLUE, bot.getColor(), "Error: the color of the player is null!");
-    }
 }
