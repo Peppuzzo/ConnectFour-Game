@@ -40,11 +40,9 @@
             </image>
         </ImageView>
 
-        <Button fx:id="modeSinglePayer" layoutX="188.0" layoutY="167.0" onAction="#handleGameModeSelection" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="SINGLEPLAYER" />
+        <Button fx:id="modeSinglePayer" layoutX="188.0" layoutY="177.0" onAction="#handleGameModeSelection" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="SINGLEPLAYER" />
 
-        <Button fx:id="modeMultiplayer" layoutX="189.0" layoutY="216.0" onAction="#handleGameModeSelection" prefHeight="26.0" prefWidth="130.0" styleClass="menu-button" text="MULTIPLAYER" />
-
-        <Button layoutX="189.0" layoutY="260.0" onAction="#logoutApp" prefHeight="26.0" prefWidth="130.0" styleClass="logout-button" text="LOGOUT" />
+        <Button layoutX="188.0" layoutY="229.0" onAction="#logoutApp" prefHeight="26.0" prefWidth="130.0" styleClass="logout-button" text="LOGOUT" />
 
     </children>
 </AnchorPane>

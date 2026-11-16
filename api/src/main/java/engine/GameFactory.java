@@ -28,7 +28,6 @@ package engine;
 import model.board.Board;
 import model.board.Color;
 import model.player.AbstractPlayer;
-import model.player.BotPlayer;
 import model.player.MyPlayer;
 
 import java.util.ArrayList;
@@ -71,35 +70,40 @@ public class GameFactory {
                 gameConfig.getPlayerConfig1().getName(),
                 gameConfig.getPlayerConfig1().getColor()
         ));
-
-
-        if (gameConfig.getMode() == Mode.MultiPlayer) {
-            players.add(new MyPlayer(
-                    gameConfig.getPlayerConfig2().getName(),
-                    gameConfig.getPlayerConfig2().getColor()
-            ));
-        } else if (gameConfig.getMode() == Mode.SinglePlayer) {
-            // If, in SinglePlayer, you want to use the color set by the user for the bot (or a default one)
-            Color botColor = (gameConfig.getPlayerConfig2() != null)
-                    ? gameConfig.getPlayerConfig2().getColor()
-                    : Color.BLUE;
-
-            players.add(new BotPlayer("Bot", botColor));
-        }
+        players.add(new MyPlayer(
+                gameConfig.getPlayerConfig2().getName(),
+                gameConfig.getPlayerConfig2().getColor()
+        ));
 
         return players;
     }
 
+
+    /**
+     * Returns the initialized manager
+     *
+     * @return the initialized manager
+     */
     public static GameManager getGameManager() {
         return manager;
     }
 
 
+    /**
+     * Returns the color configuration of the first player
+     *
+     * @return the color configuration of the first player
+     */
     public static Color getColorPlayer1() {
         return config.getPlayerConfig1().getColor();
     }
 
 
+    /**
+     * Returns the color configuration of the first player
+     *
+     * @return the color configuration of the second player
+     */
     public static Color getColorPlayer2() {
         return config.getPlayerConfig2().getColor();
     }

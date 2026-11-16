@@ -31,6 +31,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import model.board.Color;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -89,10 +90,8 @@ public class PlayerSetupController {
       throw new IllegalArgumentException("The names are not equal");
     }
     else {
-      GameConfig configFinal = new GameConfig(new PlayerConfig(name1, colo1),
-              new PlayerConfig(name2, colo2), getMode());
-      GameFactory.initializeGame(configFinal);
-
+      GameFactory.initializeGame(new GameConfig(new PlayerConfig(name1, colo1),
+              new PlayerConfig(name2, colo2), getMode()));
       try {
         javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/game-board.fxml"));
         javafx.scene.Parent root = loader.load();
@@ -105,7 +104,7 @@ public class PlayerSetupController {
         stage.show();
 
       } catch (java.io.IOException e) {
-        e.printStackTrace();
+        e.getCause();
         System.err.println("Unable to load the game screen");
       }
     }
@@ -178,7 +177,6 @@ public class PlayerSetupController {
       protected void updateItem(Color item, boolean empty) {
         super.updateItem(item, empty);
 
-
         if (empty || item == null) {
           setText(null);
           setGraphic(null);
@@ -209,9 +207,7 @@ public class PlayerSetupController {
    *
    * @param mode the game mode
    */
-  protected void setGameMode(Mode mode) {
-    if(mode == null)
-      throw new IllegalArgumentException("Mode cannot be null");
+  protected void setGameMode(@NonNull Mode mode) {
     this.mode =  mode;
   }
 

@@ -86,8 +86,9 @@ public class MainController {
 
       Stage stage = (Stage) buttonInput.getScene().getWindow();
       stage.setScene(new Scene(root, 447, 242));
-      String css = Objects.requireNonNull(this.getClass().getResource("/css/player_setup_controller.css"))
-              .toExternalForm();
+      String css = Objects.requireNonNull(this.getClass().
+              getResource("/css/player_setup_controller.css")).
+              toExternalForm();
       root.getStylesheets().add(css);
       stage.setResizable(false);
       stage.show();

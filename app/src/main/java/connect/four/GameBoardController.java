@@ -78,10 +78,7 @@ public class GameBoardController {
             for (int col = 0; col < cols; col++) {
                 Cell cell = boardState.getCell(row, col);
 
-                // Mappa il colore logico nel colore grafico di JavaFX
                 javafx.scene.paint.Color fxColor = mapCellColorToFX(cell);
-
-                // Aggiorna il cerchio visivo corrispondente
                 setCellColor(row, col, fxColor);
             }
         }
@@ -117,20 +114,12 @@ public class GameBoardController {
         if (engineColor == null) {
             return javafx.scene.paint.Color.TRANSPARENT;
         }
-
-        // Adatta i casi in base alle costanti presenti nel tuo enum model.board.Color
-        switch (engineColor) {
-            case RED:
-                return javafx.scene.paint.Color.RED;
-            case YELLOW:
-                return javafx.scene.paint.Color.YELLOW;
-            case BLUE:
-                return javafx.scene.paint.Color.BLUE;
-            // Se hai altri colori nel tuo enum, aggiungili qui sotto:
-            // case GREEN: return javafx.scene.paint.Color.GREEN;
-            default:
-                return javafx.scene.paint.Color.GRAY;
-        }
+        return switch (engineColor) {
+            case RED -> javafx.scene.paint.Color.RED;
+            case YELLOW -> javafx.scene.paint.Color.YELLOW;
+            case BLUE -> javafx.scene.paint.Color.BLUE;
+            default -> javafx.scene.paint.Color.GRAY;
+        };
     }
 
 
@@ -173,6 +162,9 @@ public class GameBoardController {
     }
 
 
+    /**
+     *
+     */
     private void handleGameOver() {
         System.out.println("Partita terminata! Vincitore: " + gameManager.getWinner().getName());
     }

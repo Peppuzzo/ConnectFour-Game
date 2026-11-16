@@ -27,7 +27,6 @@ package model;
 
 import model.board.Color;
 import model.player.AbstractPlayer;
-import model.player.BotPlayer;
 import model.player.MyPlayer;
 import org.junit.jupiter.api.Test;
 
