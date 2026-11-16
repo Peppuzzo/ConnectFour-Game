@@ -41,12 +41,6 @@ import java.util.Objects;
 public class MainController {
 
   @FXML
-  private Button modeMultiplayer;
-
-  @FXML
-  private Button modeSinglePayer;
-
-  @FXML
   private AnchorPane Pane;
 
   @FXML
