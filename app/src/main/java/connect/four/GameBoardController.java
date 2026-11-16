@@ -57,7 +57,7 @@ public class GameBoardController {
                 handleGameOver();
             }
         } else {
-            System.out.println("Colonna piena! Scegline un'altra.");
+            System.out.println("Column full! Choose another one.");
         }
     }
 
@@ -86,17 +86,15 @@ public class GameBoardController {
 
 
     /**
-     * Converte lo stato della cella del modello nel colore JavaFX usando la Factory
+     * Converts the model cell state into a JavaFX color using the factory
      */
     private javafx.scene.paint.Color mapCellColorToFX(Cell cell) {
-        // Se la cella è vuota o null
         if (cell == null || cell.color() == null) {
             return javafx.scene.paint.Color.TRANSPARENT;
         }
 
         Color cellColor = cell.color();
 
-        // Verifichiamo a quale giocatore appartiene la cella confrontando i colori del motore
         if (cellColor == GameFactory.getColorPlayer1()) {
             return convertToFXColor(GameFactory.getColorPlayer1());
         } else if (cellColor == GameFactory.getColorPlayer2()) {
@@ -108,8 +106,9 @@ public class GameBoardController {
 
 
     /**
-     * Converte il tuo enum model.board.Color nel javafx.scene.paint.Color corrispondente
+     * Converts the `model.board.Color` enum into the corresponding `javafx.scene.paint.Color`
      */
+    //TODO: It doesn't include all the colors!!
     private javafx.scene.paint.Color convertToFXColor(Color engineColor) {
         if (engineColor == null) {
             return javafx.scene.paint.Color.TRANSPARENT;
@@ -124,10 +123,11 @@ public class GameBoardController {
 
 
     /**
+     * Sets the fill color of the circle located at the specified grid coordinates.
      *
-     * @param row
-     * @param col
-     * @param color
+     * @param row   the row index of the cell
+     * @param col   the column index of the cell
+     * @param color the JavaFX color to apply to the circle
      */
     private void setCellColor(int row, int col, javafx.scene.paint.Color color) {
         Circle circle = getCircleAt(row, col);
@@ -138,10 +138,12 @@ public class GameBoardController {
 
 
     /**
+     * Retrieves the JavaFX Circle node located at the specified row and column
+     * within the board grid.
      *
-     * @param row
-     * @param col
-     * @return
+     * @param row the row index of the cell
+     * @param col the column index of the cell
+     * @return the {@link Circle} object at the given position, or {@code null} if no circle is found
      */
     private Circle getCircleAt(int row, int col) {
         for (javafx.scene.Node node : boardGrid.getChildren()) {

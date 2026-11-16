@@ -30,7 +30,6 @@ import model.board.Color;
 import model.player.AbstractPlayer;
 import model.player.MyPlayer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameFactory {
@@ -64,18 +63,10 @@ public class GameFactory {
      * @return the list of players, correctly configured
      */
     private static List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
-        List<AbstractPlayer> players = new ArrayList<>();
-
-        players.add(new MyPlayer(
-                gameConfig.getPlayerConfig1().getName(),
-                gameConfig.getPlayerConfig1().getColor()
-        ));
-        players.add(new MyPlayer(
-                gameConfig.getPlayerConfig2().getName(),
-                gameConfig.getPlayerConfig2().getColor()
-        ));
-
-        return players;
+        return List.of(new MyPlayer(gameConfig.getPlayerConfig1().getName(),
+                gameConfig.getPlayerConfig1().getColor()),
+                new MyPlayer(gameConfig.getPlayerConfig2().getName(),
+                        gameConfig.getPlayerConfig2().getColor()));
     }
 
 
