@@ -114,17 +114,11 @@ public class GameBoardController {
     /**
      * Converts the `model.board.Color` enum into the corresponding `javafx.scene.paint.Color`
      */
-    //TODO: It doesn't include all the colors!!
     private javafx.scene.paint.Color convertToFXColor(Color engineColor) {
         if (engineColor == null) {
             return javafx.scene.paint.Color.TRANSPARENT;
         }
-        return switch (engineColor) {
-            case RED -> javafx.scene.paint.Color.RED;
-            case YELLOW -> javafx.scene.paint.Color.YELLOW;
-            case BLUE -> javafx.scene.paint.Color.BLUE;
-            case GREEN -> javafx.scene.paint.Color.GREEN;
-        };
+        return javafx.scene.paint.Color.valueOf(engineColor.toString());
     }
 
 
