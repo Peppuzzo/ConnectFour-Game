@@ -37,9 +37,9 @@
 
         <Label alignment="CENTER" layoutX="151.0" layoutY="34.0" prefHeight="26.0" prefWidth="143.0" styleClass="title-label" text="CREATE THE PLAYER" />
 
-        <TextField fx:id="nameField" alignment="CENTER" layoutX="74.0" layoutY="89.0" prefHeight="26.0" prefWidth="116.0" promptText="Insert a name..." styleClass="input-field" text="PLAYER 1" />
+        <TextField fx:id="nameField" alignment="CENTER" layoutX="74.0" layoutY="89.0" prefHeight="26.0" prefWidth="116.0" promptText="Insert a name..." styleClass="input-field" />
         <ComboBox fx:id="colorsBox" layoutX="241.0" layoutY="90.0" prefWidth="150.0" promptText="Color" styleClass="color-combo" />
-        <TextField fx:id="nameField2" alignment="CENTER" layoutX="74.0" layoutY="141.0" prefHeight="26.0" prefWidth="116.0" promptText="Insert a name..." styleClass="input-field" text="PLAYER 2" />
+        <TextField fx:id="nameField2" alignment="CENTER" layoutX="74.0" layoutY="141.0" prefHeight="26.0" prefWidth="116.0" promptText="Insert a name..." styleClass="input-field" />
         <ComboBox fx:id="colorsBox2" layoutX="241.0" layoutY="141.0" prefWidth="150.0" promptText="Color" styleClass="color-combo" />
 
         <Button layoutX="190.0" layoutY="186.0" onAction="#handleConfirmButtonAction" styleClass="confirm-button" text="Confirm" />

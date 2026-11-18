@@ -26,15 +26,21 @@ package connect.four;
 
 import engine.GameFactory;
 import engine.GameManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import model.board.Board;
 import model.board.Cell;
 import model.board.Color;
+
+import java.util.Locale;
 
 public class GameBoardController {
 
@@ -50,6 +56,7 @@ public class GameBoardController {
 
         boolean moveSuccessful = gameManager.makeMove(col);
 
+        //TODO: handle the case where the grid is full, on the GUI side
         if (moveSuccessful) {
             updateBoardUI();
 
@@ -117,7 +124,7 @@ public class GameBoardController {
             case RED -> javafx.scene.paint.Color.RED;
             case YELLOW -> javafx.scene.paint.Color.YELLOW;
             case BLUE -> javafx.scene.paint.Color.BLUE;
-            default -> javafx.scene.paint.Color.GRAY;
+            case GREEN -> javafx.scene.paint.Color.GREEN;
         };
     }
 
@@ -165,9 +172,19 @@ public class GameBoardController {
 
 
     /**
-     *
+     * Generate a simple GUI to display the winner's
+     * name and terminate the program (provisional)
      */
+    //TODO: Redefining the method
     private void handleGameOver() {
-        System.out.println("Partita terminata! Vincitore: " + gameManager.getWinner().getName());
+        ButtonType loginButtonType = new ButtonType("EXIT", ButtonBar.ButtonData.FINISH);
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("End game");
+        dialog.setContentText("The winner is: "  + GameFactory.getGameManager().
+                getWinner().getName().toUpperCase(Locale.ROOT));
+        dialog.getDialogPane().getButtonTypes().add(loginButtonType);
+        dialog.showAndWait();
+        dialog.close();
+        Platform.exit();
     }
 }
