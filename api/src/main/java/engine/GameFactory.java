@@ -56,21 +56,6 @@ public class GameFactory {
 
 
     /**
-     * Helper method dedicated exclusively to the creation and configuration of players.
-     *
-     * @param gameConfig the DTO containing the setup data
-     *
-     * @return the list of players, correctly configured
-     */
-    private static List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
-        return List.of(new MyPlayer(gameConfig.getPlayerConfig1().getName(),
-                gameConfig.getPlayerConfig1().getColor()),
-                new MyPlayer(gameConfig.getPlayerConfig2().getName(),
-                        gameConfig.getPlayerConfig2().getColor()));
-    }
-
-
-    /**
      * Returns the initialized manager
      *
      * @return the initialized manager
@@ -99,4 +84,18 @@ public class GameFactory {
         return config.getPlayerConfig2().getColor();
     }
 
+
+    /**
+     * Helper method dedicated exclusively to the creation and configuration of players.
+     *
+     * @param gameConfig the DTO containing the setup data
+     *
+     * @return the list of players, correctly configured
+     */
+    private static List<AbstractPlayer> createPlayers(GameConfig gameConfig) {
+        return List.of(new MyPlayer(gameConfig.getPlayerConfig1().getName(),
+                gameConfig.getPlayerConfig1().getColor()),
+                new MyPlayer(gameConfig.getPlayerConfig2().getName(),
+                        gameConfig.getPlayerConfig2().getColor()));
+    }
 }

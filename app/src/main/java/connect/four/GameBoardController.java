@@ -107,7 +107,6 @@ public class GameBoardController {
         } else if (cellColor == GameFactory.getColorPlayer2()) {
             return convertToFXColor(GameFactory.getColorPlayer2());
         }
-
         return javafx.scene.paint.Color.TRANSPARENT;
     }
 
